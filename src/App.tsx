@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import SolarSystemCanvas from "./components/solar-system/SolarSystemCanvas";
 import PlanetInfoPanel from "./components/ui/PlanetInfoPanel";
 import PlanetSelector from "./components/ui/PlanetSelector";
-import { allBodies } from "./data/planets";
+import { allBodies, planets } from "./data/planets";
 
 export default function App() {
   const [selectedPlanet, setSelectedPlanet] = useState("earth");
@@ -28,9 +28,8 @@ export default function App() {
       {/* Header overlay */}
       <header className="topbar">
         <a className="brand" href="#" aria-label="Solar System home">
-          <span className="brand-icon">✳</span>
           <span>
-            <strong>ORBITAL</strong>
+            <strong>SOLAR</strong>
             <small>AN INTERACTIVE UNIVERSE</small>
           </span>
         </a>
@@ -70,11 +69,11 @@ export default function App() {
       <footer className="bottom-bar">
         <div className="bottom-label">
           <span>EXPLORE</span>
-          <span className="planet-count">{allBodies.length} CELESTIAL BODIES</span>
+          <span className="planet-count">{planets.length} PLANETS</span>
         </div>
 
         <PlanetSelector
-          planets={allBodies}
+          planets={planets}
           selectedPlanet={selectedPlanet}
           onSelect={selectBody}
         />

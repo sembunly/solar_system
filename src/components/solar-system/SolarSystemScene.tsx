@@ -81,7 +81,7 @@ export default function SolarSystemScene({
           <Planet
             key={planet.id}
             planet={planet}
-            selected={planet.id === selectedPlanet}
+            selected={planet.id === selectedPlanet || planet.moons.some((moon) => moon.id === selectedPlanet)}
             onSelect={onSelectPlanet}
             onRegister={registerBody}
           />

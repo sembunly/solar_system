@@ -21,19 +21,21 @@ export default function PlanetInfoPanel({
         ×
       </button>
 
-      <div className="eyebrow">SOLAR SYSTEM / {planet.kind.toUpperCase()}{planet.kind === "moon" ? ` · ${planet.parentName}` : ""}</div>
+      <div className="eyebrow info-panel-label">
+        <span>SOLAR SYSTEM / {planet.kind.toUpperCase()}{planet.kind === "moon" ? ` · ${planet.parentName}` : ""}</span>
+      </div>
 
       <div
-        className="planet-preview"
+        className={`planet-preview planet-preview-${planet.id}`}
         style={{
-          background: `radial-gradient(
-            circle at 30% 25%,
-            white -100%,
-            ${planet.color} 35%,
-            #101522 100%
-          )`,
+          backgroundColor: planet.color,
+          backgroundImage: `radial-gradient(circle at 30% 24%, rgba(255,255,255,0.24), transparent 38%), linear-gradient(125deg, transparent 40%, rgba(0,0,0,0.68) 100%), url(/textures/${planet.kind === "moon" ? "moons" : "planets"}/${planet.id}.jpg)`,
+          backgroundSize: "100% 100%, 100% 100%, 200% 100%",
+          backgroundPosition: "center, center, center",
           boxShadow: `0 0 50px ${planet.color}35`,
         }}
+        role="img"
+        aria-label={`${planet.name} texture`}
       />
 
       <h2>{planet.name}</h2>

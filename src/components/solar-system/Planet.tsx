@@ -5,7 +5,6 @@ import { TextureLoader } from "three";
 import * as THREE from "three";
 import type { PlanetData } from "../../types/planet";
 import Moon from "./Moon";
-import GoogleEarthTiles from "./GoogleEarthTiles";
 
 interface PlanetProps {
   planet: PlanetData;
@@ -43,9 +42,6 @@ export default function Planet({ planet, selected, onSelect, onRegister }: Plane
                 map={surface}
                 roughness={0.8}
                 metalness={0.05}
-                transparent={planet.id === "earth" && selected}
-                opacity={planet.id === "earth" && selected ? 0.2 : 1}
-                depthWrite={!(planet.id === "earth" && selected)}
               />
               {planet.hasRings && (
                 <group rotation={[1.1, 0, 0]}>
@@ -62,7 +58,6 @@ export default function Planet({ planet, selected, onSelect, onRegister }: Plane
                 </group>
               )}
             </mesh>
-            {planet.id === "earth" && selected && <GoogleEarthTiles />}
           </group>
 
           {planet.moons.map((moon) => (

@@ -7,9 +7,11 @@ import { allBodies, planets } from "./data/planets";
 export default function App() {
   const [selectedPlanet, setSelectedPlanet] = useState("earth");
   const [focusRequest, setFocusRequest] = useState(0);
+  const [showInfoPanel, setShowInfoPanel] = useState(true);
   const selectBody = useCallback((id: string) => {
     setSelectedPlanet(id);
     setFocusRequest((request) => request + 1);
+    setShowInfoPanel(true);
   }, []);
 
   const selected = allBodies.find((body) => body.id === selectedPlanet);
@@ -60,10 +62,12 @@ export default function App() {
       </section>
 
       {/* Selected planet details */}
-      <PlanetInfoPanel
-        planet={selected}
-        onClose={() => selectBody("")}
-      />
+      {showInfoPanel && selected && (
+        <PlanetInfoPanel
+          planet={selected}
+          onClose={() => setShowInfoPanel(false)}
+        />
+      )}
 
       {/* Planet navigation */}
       <footer className="bottom-bar">

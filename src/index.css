@@ -212,8 +212,8 @@ a:focus-visible {
   z-index: 3;
   top: 50%;
   right: 30px;
-  width: 270px;
-  padding: 26px;
+  width: 420px;
+  padding: 30px 34px;
   transform: translateY(-42%);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -250,24 +250,30 @@ a:focus-visible {
   font-size: 9px;
 }
 
+.info-panel-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .planet-preview {
-  width: 76px;
-  height: 76px;
-  margin: 25px auto 20px;
+  width: 150px;
+  height: 150px;
+  margin: 28px auto 42px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
 }
 
 .info-panel h2 {
   margin: 0;
-  font-size: 30px;
+  font-size: 42px;
   letter-spacing: -0.05em;
 }
 
 .planet-description {
   min-height: 43px;
   color: #a8b2c5;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.8;
 }
 
@@ -431,8 +437,8 @@ a:focus-visible {
 
   .info-panel {
     right: 20px;
-    width: 240px;
-    padding: 20px;
+    width: min(430px, calc(100vw - 300px));
+    padding: 24px;
   }
 
   .bottom-bar {
@@ -513,19 +519,20 @@ a:focus-visible {
   }
 
   .planet-preview {
-    width: 45px;
-    height: 45px;
-    margin: 12px auto;
+    width: 72px;
+    height: 72px;
+    margin: 14px auto 20px;
   }
 
   .info-panel h2 {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .planet-description {
     min-height: 0;
     margin: 8px 0;
-  }
+    font-size: 13px;
+  }remo
 
   .fact-list {
     gap: 8px;

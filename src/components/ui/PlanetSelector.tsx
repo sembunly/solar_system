@@ -1,7 +1,7 @@
-import type { CelestialBody } from "../../types/planet";
+import type { PlanetData } from "../../types/planet";
 
 interface PlanetSelectorProps {
-  planets: CelestialBody[];
+  planets: PlanetData[];
   selectedPlanet: string;
   onSelect: (id: string) => void;
 }
@@ -12,24 +12,25 @@ export default function PlanetSelector({
   onSelect,
 }: PlanetSelectorProps) {
   return (
-    <nav className="planet-selector" aria-label="Select a planet or moon">
+    <nav className="planet-selector" aria-label="Select a planet">
       {planets.map((planet) => {
         const active = planet.id === selectedPlanet;
 
         return (
           <button
             key={planet.id}
-            className={`planet-chip ${planet.kind === "moon" ? "moon-chip" : ""} ${active ? "active" : ""}`}
+            className={`planet-chip ${active ? "active" : ""}`}
             onClick={() => onSelect(planet.id)}
             aria-pressed={active}
-            title={planet.kind === "moon" ? `${planet.name} · ${planet.parentName}` : planet.name}
+            title={planet.name}
           >
             <span
-              className="planet-chip-dot"
-              style={{ background: planet.color }}
+              className={`planet-chip-icon planet-chip-icon-${planet.id}`}
+              style={{ backgroundImage: `url(/textures/planets/${planet.id}.jpg)` }}
+              aria-hidden="true"
             />
 
-            <span>{planet.kind === "moon" ? `☾ ${planet.name}` : planet.name}</span>
+            <span>{planet.name}</span>
           </button>
         );
       })}
